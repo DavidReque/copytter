@@ -1,10 +1,10 @@
 'use client'
 
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { GithubIcon } from './icons'
 
 export function AuthButton () {
-  const supabase = createServerComponentClient()
+  const supabase = createClientComponentClient()
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithOAuth({
