@@ -6,7 +6,10 @@ import { redirect } from 'next/navigation'
 export default async function Home () {
   const supabase = createServerComponentClient({ cookies })
 
-  const { data: posts } = await supabase.from('posts').select('*')
+  const { data: posts } = await supabase
+    .from('posts')
+    .select('*, auth.users(email')
+
   const { data: { session } } = await supabase.auth.getSession()
 
   if (session === null) {
