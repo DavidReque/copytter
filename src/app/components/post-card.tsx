@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from '@nextui-org/react'
+'use client'
+
+import { Card, CardHeader, CardBody, CardFooter, Avatar } from '@nextui-org/react'
 
 export default function PostCard ({
   userFullName,
@@ -12,39 +13,21 @@ export default function PostCard ({
   avatarUrl: string
   content: string
 }) {
-  const [isFollowed, setIsFollowed] = useState(false)
-
   return (
     <Card className="max-w-[340px]">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
-          <Avatar isBordered radius="full" size="md" src="/avatars/avatar-1.png" />
+          <Avatar isBordered radius="full" size="md" src={avatarUrl} />
           <div className="flex flex-col gap-1 items-start justify-center">
-            <h4 className="text-small font-semibold leading-none text-default-600">Zoey Lang</h4>
-            <h5 className="text-small tracking-tight text-default-400">@zoeylang</h5>
+            <h4 className="text-small font-semibold leading-none text-default-600">{userFullName}</h4>
+            <h5 className="text-small tracking-tight text-default-400">{userName}</h5>
           </div>
         </div>
-        <Button
-          className={isFollowed ? 'bg-transparent text-foreground border-default-200' : ''}
-          color="primary"
-          radius="full"
-          size="sm"
-          variant={isFollowed ? 'bordered' : 'solid'}
-          onPress={() => { setIsFollowed(!isFollowed) }}
-        >
-          {isFollowed ? 'Unfollow' : 'Follow'}
-        </Button>
       </CardHeader>
       <CardBody className="px-3 py-0 text-small text-default-400">
         <p>
-          Frontend developer and UI/UX enthusiast. Join me on this coding adventure!
+            {content}
         </p>
-        <span className="pt-2">
-          #FrontendWithZoey
-          <span className="py-2" aria-label="computer" role="img">
-            💻
-          </span>
-        </span>
       </CardBody>
       <CardFooter className="gap-3">
         <div className="flex gap-1">
