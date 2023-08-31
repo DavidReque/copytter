@@ -9,7 +9,7 @@ export default async function Home () {
 
   const { data: posts } = await supabase
     .from('posts')
-    .select('*, user:users(name, avatar_url, user_name)')
+    .select('*, user:users(name, user_name, avatar_url)')
 
   const { data: { session } } = await supabase.auth.getSession()
 
