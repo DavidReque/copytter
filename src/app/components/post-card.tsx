@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardBody, CardFooter, Avatar } from '@nextui-org/react'
 import Link from 'next/link'
+import { IconMessageCircle, IconHeart, IconRepeat } from '@tabler/icons-react'
 
 export default function PostCard ({
   userFullName,
@@ -33,6 +34,15 @@ export default function PostCard ({
         </p>
       </CardBody>
       <CardFooter className="gap-3">
+        <button>
+        <IconMessageCircle className='w-4 h-4'/>
+        </button>
+        <button>
+        <IconHeart className='w-4 h-4'/>
+        </button>
+        <button>
+        <IconRepeat className='w-4 h-4'/>
+        </button>
       </CardFooter>
     </Card>
   )
