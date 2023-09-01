@@ -3,9 +3,10 @@ import { cookies } from 'next/headers'
 import AuthButtonServer from './components/auth-button-server'
 import { redirect } from 'next/navigation'
 import PostList from './components/post-list'
+import { type Database } from './types/database'
 
 export default async function Home () {
-  const supabase = createServerComponentClient({ cookies })
+  const supabase = createServerComponentClient<Database>({ cookies })
 
   const { data: posts } = await supabase
     .from('posts')
