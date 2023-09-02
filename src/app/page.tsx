@@ -9,10 +9,16 @@ import ComposePost from './components/compose-post'
 export default async function Home () {
   const supabase = createServerComponentClient<Database>({ cookies })
 
-  const { data: posts } = await supabase
+  const { data } = await supabase
     .from('posts')
     .select('*, user:users(name, user_name, avatar_url)')
     .order('created_at', { ascending: false })
+
+  const posts =
+    data?.map(post => ({
+      ...post,
+      user: Array.isArray(post.user) ? post.user[0] : post.user
+    })) ?? []
 
   const { data: { session } } = await supabase.auth.getSession()
 
