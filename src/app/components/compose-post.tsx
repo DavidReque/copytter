@@ -2,6 +2,7 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import ComposePostTextarea from './compose-post-textarea'
+import ComposePostButton from './compose-post-button'
 
 export default function ComposePost ({
   userAvatarUrl
@@ -30,9 +31,7 @@ export default function ComposePost ({
         <img src={userAvatarUrl} className='rounded-full w-10 h-10 object-contain mr-4'/>
         <div className='flex flex-1 flex-col gap-y-4'>
         <ComposePostTextarea/>
-        <button type='submit' className='bg-sky-500 text-sm font-bold rounded-full px-5 py-2 self-end'>
-            Postear
-        </button>
+        <ComposePostButton/>
         </div>
     </form>
   )
